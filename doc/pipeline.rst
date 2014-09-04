@@ -3,16 +3,16 @@ Authentication Pipeline
 
 The final process of the authentication workflow is handled by an operations
 pipeline where custom functions can be added or default items can be removed to
-provide a custom behavior.
+customise behavior.
 
 The default pipeline mimics the user creation and basic data gathering from
-previous django-social-auth_ versions and a big set of settings (listed below)
+previous django-social-auth_ versions and the large collection of settings (listed below)
 that were used to alter the default behavior are now deprecated in favor of
-pipeline overrides.
+adjusting the pipeline tuple.
 
-The default pipeline is composed by::
+The default pipeline comprises::
 
-    (
+    SOCIAL_AUTH_PIPELINE = (
         'social_auth.backends.pipeline.social.social_auth_user',
         #'social_auth.backends.pipeline.associate.associate_by_email',
         'social_auth.backends.pipeline.user.get_username',
@@ -51,7 +51,7 @@ Each pipeline function will receive the following parameters:
     * Current social authentication backend
     * User ID given by authentication provider
     * User details given by authentication provider
-    * ``is_new`` flag (initialized in ``False``)
+    * ``is_new`` flag (initialized to ``False``)
     * Any arguments passed to ``auth_complete`` backend method, default views
       pass this arguments:
         - current logged in user (if it's logged in, otherwise ``None``)
@@ -102,7 +102,7 @@ defined by ``SOCIAL_AUTH_PARTIAL_PIPELINE_KEY``, which default value is
 
     SOCIAL_AUTH_PARTIAL_PIPELINE_KEY = 'partial_pipeline'
 
-Check the `example application`_ to check a basic usage.
+Check the `example application`_ for basic usage.
 
 
 .. _django-social-auth: https://github.com/omab/django-social-auth
